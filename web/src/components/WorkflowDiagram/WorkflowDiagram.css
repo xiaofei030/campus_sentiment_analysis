@@ -1,0 +1,270 @@
+/* ===== 工作流流程图 ===== */
+.workflow-diagram {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.workflow-diagram h4 {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--accent-light);
+}
+
+.diagram-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+/* 行布局 */
+.diagram-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.diagram-row.branches {
+  justify-content: space-between;
+  max-width: 280px;
+  padding: 0 10px;
+}
+
+.diagram-row.right-aligned {
+  justify-content: flex-end;
+  max-width: 280px;
+  padding-right: 10px;
+}
+
+/* 节点基础样式 */
+.node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  min-width: 75px;
+  transition: all 0.3s ease;
+}
+
+.node.active {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.25), rgba(108, 92, 231, 0.1));
+  box-shadow: 0 0 12px rgba(108, 92, 231, 0.4);
+}
+
+.node.inactive {
+  opacity: 0.35;
+}
+
+.node.pending {
+  border-color: var(--border);
+  background: var(--bg-secondary);
+  opacity: 0.5;
+}
+
+.node.pending .node-icon {
+  filter: grayscale(0.6);
+}
+
+/* 开始节点 */
+.node.start {
+  border-color: var(--info);
+}
+
+.node.start.active {
+  border-color: var(--info);
+  background: linear-gradient(135deg, rgba(116, 185, 255, 0.25), rgba(116, 185, 255, 0.1));
+  box-shadow: 0 0 12px rgba(116, 185, 255, 0.4);
+}
+
+/* 结束节点 */
+.node.end {
+  border-color: var(--success);
+}
+
+.node.end.active {
+  border-color: var(--success);
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.25), rgba(0, 184, 148, 0.1));
+  box-shadow: 0 0 12px rgba(0, 184, 148, 0.4);
+}
+
+/* 决策节点 (菱形) */
+.node.decision {
+  border-radius: 4px;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  padding: 1rem 1.5rem;
+  min-width: 60px;
+}
+
+/* 节点内容 */
+.node-icon {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.node-label {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+/* ===== SVG 曲线箭头 ===== */
+.curve-arrow {
+  width: 60px;
+  height: 28px;
+  margin: 2px 0;
+}
+
+.curve-arrow path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+}
+
+.curve-arrow path.active {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.5));
+}
+
+.curve-arrow polygon {
+  fill: var(--border);
+  transition: fill 0.3s ease;
+}
+
+.curve-arrow polygon.active {
+  fill: var(--accent);
+}
+
+/* 分支曲线 */
+.branch-curves {
+  width: 280px;
+  height: 45px;
+  margin: 2px 0;
+}
+
+.branch-curves .branch-path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+}
+
+.branch-curves .branch-path.active {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.5));
+}
+
+.branch-curves polygon {
+  fill: var(--border);
+  transition: fill 0.3s ease;
+}
+
+.branch-curves polygon.active {
+  fill: var(--accent);
+}
+
+.branch-curves .label {
+  font-size: 9px;
+  fill: var(--text-secondary);
+  transition: fill 0.3s ease;
+}
+
+.branch-curves .label.active {
+  fill: var(--accent-light);
+  font-weight: bold;
+}
+
+/* 两侧并行连接线容器 */
+.parallel-lines {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+  padding: 0 10px;
+}
+
+.parallel-lines .vertical-curve {
+  width: 60px;
+  height: auto;
+}
+
+.parallel-lines > .vertical-curve {
+  height: 130px;
+}
+
+/* 右侧分支（知识检索 → 专业回复） */
+.right-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-branch .vertical-curve {
+  height: 28px;
+}
+
+.right-branch .node {
+  margin: 2px 0;
+}
+
+/* 垂直曲线样式 */
+.vertical-curve path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+}
+
+.vertical-curve path.active {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.5));
+}
+
+.vertical-curve polygon {
+  fill: var(--border);
+  transition: fill 0.3s ease;
+}
+
+.vertical-curve polygon.active {
+  fill: var(--accent);
+}
+
+/* 汇聚曲线 */
+.converge-curves {
+  width: 100%;
+  max-width: 280px;
+  height: 30px;
+  margin: 2px 0;
+}
+
+.converge-curves .converge-path {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2;
+  transition: stroke 0.3s ease;
+}
+
+.converge-curves .converge-path.active {
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 3px rgba(108, 92, 231, 0.5));
+}
+
+.converge-curves polygon {
+  fill: var(--border);
+  transition: fill 0.3s ease;
+}
+
+.converge-curves polygon.active {
+  fill: var(--accent);
+}

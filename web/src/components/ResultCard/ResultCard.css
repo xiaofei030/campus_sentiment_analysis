@@ -1,0 +1,130 @@
+/* ===== 结果卡片 ===== */
+.result-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+}
+
+.result-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--accent-light);
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.5rem 0;
+  gap: 1rem;
+}
+
+.result-row .label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  min-width: 80px;
+}
+
+.result-row .value {
+  text-align: right;
+  flex: 1;
+}
+
+.result-row.reasoning {
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.result-row.reasoning .value {
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* ===== 标签 ===== */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(108, 92, 231, 0.2);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--accent-light);
+}
+
+.tag.keyword {
+  background: rgba(116, 185, 255, 0.2);
+  color: var(--info);
+}
+
+.tag.risk {
+  background: rgba(231, 76, 60, 0.2);
+  color: var(--danger);
+}
+
+/* ===== 情感颜色 ===== */
+.sentiment-正面, .sentiment-positive {
+  color: var(--success);
+}
+
+.sentiment-负面, .sentiment-negative {
+  color: var(--danger);
+}
+
+.sentiment-中性, .sentiment-neutral {
+  color: var(--text-secondary);
+}
+
+/* ===== 风险等级 ===== */
+.risk-level {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.risk-level.low {
+  background: rgba(0, 184, 148, 0.2);
+  color: var(--success);
+}
+
+.risk-level.medium {
+  background: rgba(253, 203, 110, 0.2);
+  color: var(--warning);
+}
+
+.risk-level.high, .risk-level.critical {
+  background: rgba(231, 76, 60, 0.2);
+  color: var(--danger);
+}
+
+.highlight {
+  color: var(--accent-light);
+  font-weight: 600;
+}
+
+.actions {
+  list-style: none;
+  text-align: left;
+}
+
+.actions li {
+  padding: 0.3rem 0;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.actions li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}

@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Environment variables (contains API keys & passwords)
+.env
+
+# Node.js
+web/node_modules/
+web/.vite/
+
+# MediaCrawler runtime data (browser sessions & crawled data)
+src/crawler/MediaCrawler/browser_data/
+src/crawler/MediaCrawler/data/
+
+# ChromaDB local storage
+chroma_db/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+
+# Cursor IDE
+.cursor/

@@ -1,0 +1,163 @@
+.workflow-log {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.log-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.log-status {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+}
+
+.log-status.running {
+  background: var(--accent);
+  color: white;
+  animation: log-pulse 1.5s infinite;
+}
+
+@keyframes log-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.log-content {
+  padding: 8px 16px;
+  max-height: 140px;
+  overflow-y: auto;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 自定义滚动条 */
+.log-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.log-content::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.log-content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.log-content::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.log-empty {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+}
+
+.log-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(61, 61, 92, 0.5);
+}
+
+.log-item:last-of-type {
+  border-bottom: none;
+}
+
+.log-time {
+  color: var(--text-secondary);
+  font-size: 10px;
+  min-width: 60px;
+  opacity: 0.8;
+}
+
+.log-icon {
+  width: 14px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.log-icon.success {
+  color: var(--success);
+}
+
+.log-icon.running {
+  color: var(--accent);
+  animation: log-spin 1s linear infinite;
+}
+
+.log-icon.error {
+  color: var(--danger);
+}
+
+@keyframes log-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.log-node {
+  color: var(--accent-light);
+  font-weight: 600;
+  min-width: 65px;
+  font-size: 11px;
+}
+
+.log-message {
+  color: var(--text-primary);
+  flex: 1;
+  font-size: 11px;
+}
+
+/* 不同状态的日志行样式 */
+.log-item.success {
+  opacity: 0.85;
+}
+
+.log-item.running {
+  background: rgba(108, 92, 231, 0.1);
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin: 1px -6px;
+  opacity: 1;
+}
+
+.log-item.error .log-message {
+  color: var(--danger);
+}
+
+/* 响应式 */
+@media (max-width: 600px) {
+  .log-content {
+    max-height: 120px;
+    font-size: 11px;
+  }
+  
+  .log-time {
+    display: none;
+  }
+  
+  .log-node {
+    min-width: 55px;
+  }
+}
